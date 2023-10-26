@@ -31,4 +31,4 @@ jobs:
           USERNAME=`echo ${{ github.actor }} | tr '-' '_'`
           USERID=`cat slack.json | jq -r ".\"$USERNAME\""`
           echo "Alerting for failed workflow - ${{ github.event.workflow_run.name }}"
-          curl -d "text=<@${USERID}> self-approved the PR ${{ github.event.issue.html_url }}" -d "channel=C05TTQX0KKP" -H "Authorization: Bearer ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}" -X POST https://slack.com/api/chat.postMessage
+          echo ${{ github.event.issue.html_url }}
